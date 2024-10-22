@@ -13,13 +13,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "big_led.h"
 
 enum custom_keycodes {
   KC_CUST = SAFE_RANGE,
 };
-
-static uint16_t capsblink_timer;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[0] = LAYOUT_all(
@@ -45,22 +42,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, 
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_UP,   _______, 
-   _______, _______, MS_WHLD, _______,                            _______, _______,                   _______, _______, KC_LEFT, KC_DOWN, KC_RGHT)
+   _______, _______, _______, _______,                            _______, _______,                   _______, _______, KC_LEFT, KC_DOWN, KC_RGHT)
 };
 
-#if defined(ENCODER_MAP_ENABLE)
-#if defined(MOUSEKEY_ENABLE)
-//const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+// #if defined(ENCODER_MAP_ENABLE)
+// const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 //    [0] = { ENCODER_CCW_CW(MS_WHLD, MS_WHLU) },
 //    [1] = { ENCODER_CCW_CW(MS_WHLL, MS_WHLR) },
 //    [2] = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
 //    [3] = { ENCODER_CCW_CW(RGB_HUD, RGB_SAD) }, //hold shift for opposite on these
-//};
-#endif
-#endif
+// };
+// #endif
 
 void matrix_init_user(void) {
-  capsblink_timer = timer_read();
+  //capsblink_timer = timer_read();
 }
 
 bool led_update_user(led_t led_state) {    
